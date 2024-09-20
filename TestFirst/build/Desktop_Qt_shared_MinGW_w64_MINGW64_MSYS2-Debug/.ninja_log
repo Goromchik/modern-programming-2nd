@@ -1,0 +1,9 @@
+# ninja log v6
+143	1428	7479619731567490	CMakeFiles/TestFirst.dir/mainwindow.cpp.obj	4a26654313caae87
+155	1763	7479616343385303	CMakeFiles/TestFirst.dir/main.cpp.obj	a7e9012aabeaf8d
+726	3096	7479605215561941	CMakeFiles/TestFirst.dir/TestFirst_autogen/mocs_compilation.cpp.obj	eea2ba0a93892166
+23	143	7479619730366433	C:/Users/Romchik/Downloads/TestFirst/build/Desktop_Qt_shared_MinGW_w64_MINGW64_MSYS2-Debug/TestFirst_autogen/mocs_compilation.cpp	2b06b29277daa929
+23	143	7479619730366433	C:/Users/Romchik/Downloads/TestFirst/build/Desktop_Qt_shared_MinGW_w64_MINGW64_MSYS2-Debug/TestFirst_autogen/timestamp	2b06b29277daa929
+23	143	7479619730366433	TestFirst_autogen/mocs_compilation.cpp	2b06b29277daa929
+1428	1525	7479619744409773	TestFirst.exe	a68ac3d32b57c4e8
+23	143	7479619730366433	TestFirst_autogen/timestamp	2b06b29277daa929
