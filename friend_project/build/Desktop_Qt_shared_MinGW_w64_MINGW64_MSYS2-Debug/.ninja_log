@@ -1,0 +1,22 @@
+# ninja log v6
+665	2825	7546506464868161	CMakeFiles/friend_project.dir/mainwindow.cpp.obj	1ce2daa298b5ddf9
+3071	3226	7546506488926291	friend_project.exe	b14b20e00281f5cc
+214	2680	7546469460995981	CMakeFiles/friend_project.dir/registerform.cpp.obj	d6b05250fadcda91
+211	2598	7546469460964358	CMakeFiles/friend_project.dir/loginform.cpp.obj	5b1f080f34295da6
+668	2748	7546506464898160	CMakeFiles/friend_project.dir/mainchatwindow.cpp.obj	7290a5f229192f74
+659	3071	7546506464808153	CMakeFiles/friend_project.dir/friend_project_autogen/mocs_compilation.cpp.obj	dee91801ef351a33
+662	2781	7546506464838155	CMakeFiles/friend_project.dir/main.cpp.obj	e327a5f84a36f753
+13	658	7546506464148159	C:/modern_programming-2nd/friend_project/build/Desktop_Qt_shared_MinGW_w64_MINGW64_MSYS2-Debug/friend_project_autogen/mocs_compilation.cpp	97e7fa23f9a99b08
+13	658	7546506464148159	C:/modern_programming-2nd/friend_project/build/Desktop_Qt_shared_MinGW_w64_MINGW64_MSYS2-Debug/friend_project_autogen/timestamp	97e7fa23f9a99b08
+13	658	7546506464148159	friend_project_autogen/mocs_compilation.cpp	97e7fa23f9a99b08
+13	658	7546506464148159	friend_project_autogen/timestamp	97e7fa23f9a99b08
+45	940	7546512439626805	friend_project_autogen/timestamp	97e7fa23f9a99b08
+45	940	7546512439626805	friend_project_autogen/mocs_compilation.cpp	97e7fa23f9a99b08
+45	940	7546512439626805	C:/modern_programming-2nd/friend_project/build/Desktop_Qt_shared_MinGW_w64_MINGW64_MSYS2-Debug/friend_project_autogen/timestamp	97e7fa23f9a99b08
+45	940	7546512439626805	C:/modern_programming-2nd/friend_project/build/Desktop_Qt_shared_MinGW_w64_MINGW64_MSYS2-Debug/friend_project_autogen/mocs_compilation.cpp	97e7fa23f9a99b08
+946	4006	7546512440576789	CMakeFiles/friend_project.dir/main.cpp.obj	e327a5f84a36f753
+949	4052	7546512440606791	CMakeFiles/friend_project.dir/mainwindow.cpp.obj	1ce2daa298b5ddf9
+942	4255	7546512440526784	CMakeFiles/friend_project.dir/friend_project_autogen/mocs_compilation.cpp.obj	dee91801ef351a33
+953	4266	7546512440636792	CMakeFiles/friend_project.dir/loginform.cpp.obj	5b1f080f34295da6
+956	4422	7546512440666781	CMakeFiles/friend_project.dir/registerform.cpp.obj	d6b05250fadcda91
+4422	4583	7546512475335227	friend_project.exe	b14b20e00281f5cc

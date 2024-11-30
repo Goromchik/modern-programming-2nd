@@ -1,0 +1,9 @@
+# ninja log v6
+19	532	7491623338862140	keyboard_autogen/timestamp	6cce9c4d34319c39
+19	532	7491623338862140	keyboard_autogen/mocs_compilation.cpp	6cce9c4d34319c39
+19	532	7491623338862140	C:/Users/Romchik/Documents/keyboard/build/Desktop_Qt_shared_MinGW_w64_MINGW64_MSYS2-Debug/keyboard_autogen/timestamp	6cce9c4d34319c39
+19	532	7491623338862140	C:/Users/Romchik/Documents/keyboard/build/Desktop_Qt_shared_MinGW_w64_MINGW64_MSYS2-Debug/keyboard_autogen/mocs_compilation.cpp	6cce9c4d34319c39
+535	1815	7491623339362223	CMakeFiles/keyboard.dir/keyboard_autogen/mocs_compilation.cpp.obj	dde5a0ed52a7832a
+538	1840	7491623339392142	CMakeFiles/keyboard.dir/main.cpp.obj	3a0e59fce7f1d5a9
+540	1877	7491623339412149	CMakeFiles/keyboard.dir/mainwindow.cpp.obj	afd2e4defc1ec86e
+1877	2151	7491623352780365	keyboard.exe	a9ab619676ec7962

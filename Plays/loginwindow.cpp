@@ -1,5 +1,9 @@
 #include "loginwindow.h"
 
+#include <QWidget>
+#include <QLabel>
+#include <QVBoxLayout>
+
 LoginWindow::LoginWindow(QWidget *parent) : QWidget(parent) {
     setFixedSize(300, 300);
 
