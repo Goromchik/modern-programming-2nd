@@ -4,15 +4,29 @@
 #include <QWidget>
 #include <QLineEdit>
 #include <QPushButton>
+#include <QRadioButton>
+#include <QComboBox>
+#include <QNetworkAccessManager>
+#include <QNetworkReply>
+#include <QNetworkRequest>
+#include <QSettings>
+extern QSettings* globalSettings;
+void initGlobalSettings();
 
 class LoginForm : public QWidget {
     Q_OBJECT
 
 public:
     explicit LoginForm(QWidget *parent = nullptr);
+    QString server_url = "http://192.168.0.141:8300/login";
 
 signals:
-    void registerClicked();
+    void goToRegister();
+    void loginSuccessful();
+
+private slots:
+    void onLoginClicked();
+    void onRegisterClicked();
 
 private:
     QLineEdit *usernameInput;
