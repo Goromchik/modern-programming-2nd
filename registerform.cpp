@@ -1,5 +1,4 @@
 #include "registerform.h"
-#include "registerform.h"
 #include <QVBoxLayout>
 #include <QLabel>
 #include <QHBoxLayout>
@@ -7,16 +6,28 @@
 #include <QLineEdit>
 #include <QComboBox>
 #include <QMessageBox>
+#include <QNetworkAccessManager>
+#include <QNetworkReply>
+#include <QNetworkRequest>
+#include <QUrl>
+#include <QJsonDocument>
+#include <QJsonObject>
 
 RegisterForm::RegisterForm(QWidget *parent) : QWidget(parent) {
     QVBoxLayout *layout = new QVBoxLayout(this);
+
+    //setFixedSize(800, 600);
+    QPalette palette;
+    palette.setColor(QPalette::Window, QColor("#E0F0F6"));
+    setPalette(palette);
+    setAutoFillBackground(true);
 
     QLabel *titleLabel = new QLabel("Регистрация", this);
     titleLabel->setAlignment(Qt::AlignCenter);
     titleLabel->setStyleSheet("font-size: 24px; font-weight: bold;");
     layout->addWidget(titleLabel);
 
-    QLabel *emailLabel = new QLabel("E-mail или номер телефона", this);
+    QLabel *emailLabel = new QLabel("E-mail", this);
     emailLabel->setStyleSheet("font-size: 16px;");
     layout->addWidget(emailLabel);
 
@@ -78,16 +89,15 @@ RegisterForm::RegisterForm(QWidget *parent) : QWidget(parent) {
     genderPrefCombo = new QComboBox(this);
     genderPrefCombo->addItem("Мужской");
     genderPrefCombo->addItem("Женский");
-    genderPrefCombo->addItem("Любой");
     preferenceLayout->addWidget(genderPrefLabel);
     preferenceLayout->addWidget(genderPrefCombo);
 
     QLabel *agePrefLabel = new QLabel("Возраст:", this);
     agePrefCombo = new QComboBox(this);
     agePrefCombo->addItem("16-18");
-    agePrefCombo->addItem("18-21");
-    agePrefCombo->addItem("21-25");
-    agePrefCombo->addItem("25+");
+    agePrefCombo->addItem("19-23");
+    agePrefCombo->addItem("24-30");
+    agePrefCombo->addItem("31-100");
     preferenceLayout->addWidget(agePrefLabel);
     preferenceLayout->addWidget(agePrefCombo);
 
@@ -101,12 +111,70 @@ RegisterForm::RegisterForm(QWidget *parent) : QWidget(parent) {
     loginButton->setStyleSheet("background-color: #6C757D; color: white; border: none; border-radius: 5px; padding: 10px;");
     layout->addWidget(loginButton);
 
-    connect(loginButton, &QPushButton::clicked, this, &RegisterForm::loginClicked);
-
-    // Добавляем кнопку "Зарегистрироваться"
+    connect(loginButton, &QPushButton::clicked, this, &RegisterForm::onLoginClicked);
     connect(registerButton, &QPushButton::clicked, this, &RegisterForm::onRegisterClicked);
+
+    setLayout(layout);
+}
+
+void RegisterForm::onLoginClicked() {
+    emit loginClicked();
 }
 
 void RegisterForm::onRegisterClicked() {
-    QMessageBox::information(this, "Успешная регистрация", "Вы успешно зарегистрировались!");
+    QString email = emailInput -> text();
+    QString username = usernameInput -> text();
+    QString password = passwordInput -> text();
+    QString confirmPassword = confirmPasswordInput -> text();
+    if (password != confirmPassword) {
+        QMessageBox::warning(this, "Ошибка регистрации", "Пароли не совпадают.");
+        return;
+    }
+    QString age = ageInput -> text();
+    QString gender;
+    if (maleRadio->isChecked()) {
+        gender = "male";
+    } else if (femaleRadio->isChecked()) {
+        gender = "female";
+    }
+    QString genderPreference = genderPrefCombo->currentText();
+    QString agePreference = agePrefCombo->currentText();
+
+    bool ok;
+    int ages = age.toInt(&ok);
+    if (!ok) {
+        QMessageBox::warning(this, "Ошибка регистрации", "Возраст должен быть числом.");
+        return;
+    }
+
+    QNetworkAccessManager *manager = new QNetworkAccessManager(this);
+    QUrl url(server_url);
+    QNetworkRequest request(url);
+    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+    QJsonObject jsonData;
+    jsonData["email"] = email;
+    jsonData["username"] = username;
+    jsonData["password"] = password;
+    jsonData["age"] = ages;
+    jsonData["sex"] = gender;
+    jsonData["preferred_sex"] = genderPreference;
+    jsonData["preferred_age"] = agePreference;
+
+    //QMessageBox::information(this, "Успешная регистрация", "Вы успешно зарегистрировались!");
+
+    QJsonDocument doc(jsonData);
+    QByteArray postData = doc.toJson();
+
+    QNetworkReply *reply = manager->post(request, postData);
+    connect(reply, &QNetworkReply::finished, [=]() {
+        if (reply->error() == QNetworkReply::NoError) {
+            QByteArray responseData = reply->readAll();
+            QMessageBox::information(this, "Успешная регистрация", "Данные успешно отправлены на сервер.");
+        } else {
+            QMessageBox::warning(this, "Ошибка регистрации", "Ошибка при отправке данных на сервер: " + reply->errorString());
+        }
+        reply->deleteLater();
+    });
 }
+
+
